@@ -1,0 +1,6 @@
+GET http://localhost:8081/api/accounts/command/readAccountSummary/a411496a-937b-4188-bd25-545af37d6429
+Content-Type: application/json
+Cache-Control: no-cache
+
+###
+

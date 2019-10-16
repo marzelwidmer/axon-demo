@@ -1,0 +1,10 @@
+POST http://localhost:8080/api/accounts/command/createDeposit
+Content-Type: application/json
+Cache-Control: no-cache
+
+{   "amount": 200 }
+
+<> 2019-10-16T014614.200.json
+
+###
+

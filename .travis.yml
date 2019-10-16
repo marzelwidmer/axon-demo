@@ -1,0 +1,20 @@
+language: java
+jdk: oraclejdk8
+
+matrix:
+  include:
+    - name: "build foo-service"
+      script:
+        - cd foo-service
+        - ./mvnw clean install -B
+        - cd ..
+    - name: "build customer-service"
+      script:
+        - cd customer-service
+        - ./mvnw clean install -B
+        - cd ..
+    - name: "build foobar-service"
+      script:
+        - cd foobar-service
+        - ./mvnw clean install -B
+        - cd ..
