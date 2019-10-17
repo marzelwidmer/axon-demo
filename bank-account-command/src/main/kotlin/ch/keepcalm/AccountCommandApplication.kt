@@ -32,36 +32,3 @@ class IndexController : RepresentationModel<IndexController>(){
             }
 }
 
-
-//@Component
-//class AccountTestRunner(private val commandGateway: CommandGateway, private val queryGateway: QueryGateway) : CommandLineRunner {
-//
-//    private val log = LoggerFactory.getLogger(AccountTestRunner::class.java)
-//
-//    override fun run(vararg args: String?) {
-//        val id = UUID.randomUUID()
-//
-//        log.debug("Sending loyaltyPoints command")
-//        commandGateway.sendAndWait<Any>(DepositCommand(id = id, amount = 100))
-//
-//        log.debug("Sending redeem loyaltyPoints command")
-//        commandGateway.sendAndWait<Any>(WithdrawCommand(id = id, amount = 40))
-//
-//        log.debug("Sending redeem command")
-//        commandGateway.sendAndWait<Any>(WithdrawCommand(id = id, amount = 30))
-//
-//        Thread.sleep(500) // Wait a bit.
-//        log.debug("quering")
-//        log.debug("summary queried {} ", queryGateway.query(AccountSummaryQuery(id),
-//                ResponseTypes.instanceOf(AccountSummary::class.java)).join())
-//
-//        log.debug("Sending redeem command")
-//        commandGateway.sendAndWait<Any>(WithdrawCommand(id = id, amount = 30))
-//
-//        Thread.sleep(500) // Wait a bit.
-//        log.debug("summary queried {} ", queryGateway.query(AccountSummaryQuery(id),
-//                ResponseTypes.instanceOf(AccountSummary::class.java)).join())
-//
-//
-//    }
-//}

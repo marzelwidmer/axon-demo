@@ -1,9 +1,9 @@
 spring:
   application:
-    name: account-command
+    name: bank-account-command
 
 logging.level:
-  ch.keepcalm.bank: DEBUG
+  ch.keepcalm: DEBUG
 
 axon:
   axonserver:
