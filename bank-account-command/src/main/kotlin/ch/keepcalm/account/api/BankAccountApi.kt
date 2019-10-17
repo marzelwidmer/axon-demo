@@ -25,3 +25,13 @@ data class BankAccountCreatedEvent(@NotNull(message = "Id cannot be null")  val 
 data class CashDepositedEvent(@NotNull(message = "Id cannot be null")  val id: String, val amount: Int)
 data class CashWithdrawnEvent(@NotNull(message = "Id cannot be null")  val id: String, val amount: Int)
 
+
+//                                             
+//    ___ ___  _ __ ___  _ __ ___   ___  _ __  
+//   / __/ _ \| '_ ` _ \| '_ ` _ \ / _ \| '_ \ 
+//  | (__ (_) | | | | | | | | | | | (_) | | | |
+//   \___\___/|_| |_| |_|_| |_| |_|\___/|_| |_|
+//
+class InsufficientBalanceException internal constructor(message: String) : RuntimeException(message)
+class NotEnoughFundsException : Exception()
+class FindAllWalletsQuery
