@@ -1,4 +1,5 @@
-POST http://localhost:8080/api/accounts/command/createDeposit
+## Create Account
+POST http://localhost:8080/command/accounts
 Content-Type: application/json
 Cache-Control: no-cache
 
@@ -7,4 +8,30 @@ Cache-Control: no-cache
 <> 2019-10-16T014614.200.json
 
 ###
+
+
+## Add Cash
+PUT http://localhost:8080/command/accounts/1b7b6258-1a5b-442e-bdd0-0996369626fa/deposit
+Content-Type: application/json
+Cache-Control: no-cache
+
+{   "amount": 200 }
+
+<> 2019-10-16T014614.200.json
+
+###
+
+
+
+## Remove Cash
+PUT http://localhost:8080/command/accounts/1b7b6258-1a5b-442e-bdd0-0996369626fa/withdrawal
+Content-Type: application/json
+Cache-Control: no-cache
+
+{   "amount": 200 }
+
+<> 2019-10-16T014614.200.json
+
+###
+
 

@@ -9,7 +9,6 @@ import javax.validation.constraints.NotNull
 //  | (__ (_) | | | | | | | | | | | (_| | | | | (_| \__ \
 //   \___\___/|_| |_| |_|_| |_| |_|\__,_|_| |_|\__,_|___/
 //
-//open class BaseCommand<T>(@field:TargetAggregateIdentifier @NotNull(message = "Id cannot be null") val id: String)
 data class CreateBankAccountCommand(@TargetAggregateIdentifier val id: String, val balance: Int) // : BaseCommand<String>()
 data class DepositCashCommand(@TargetAggregateIdentifier val id: String, val amount: Int) //: BaseCommand<String>(id)
 data class WithdrawCashCommand(@TargetAggregateIdentifier val id: String, val amount: Int)//: BaseCommand<String>(id)
@@ -32,6 +31,4 @@ data class CashWithdrawnEvent(@NotNull(message = "Id cannot be null")  val id: S
 //  | (__ (_) | | | | | | | | | | | (_) | | | |
 //   \___\___/|_| |_| |_|_| |_| |_|\___/|_| |_|
 //
-class InsufficientBalanceException internal constructor(message: String) : RuntimeException(message)
-class NotEnoughFundsException : Exception()
-class FindAllWalletsQuery
+class NotEnoughMoneyException internal constructor(message: String) : RuntimeException(message)

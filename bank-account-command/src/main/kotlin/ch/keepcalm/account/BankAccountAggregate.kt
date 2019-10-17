@@ -39,11 +39,11 @@ class BankAccountAggregate {
 
     // WithdrawCash
     @CommandHandler
-    @Throws(NotEnoughFundsException::class)
+    @Throws(NotEnoughMoneyException::class)
     protected fun handle(command: WithdrawCashCommand) {
         val amount = command.amount
         if (balance - amount < 0) {
-            throw NotEnoughFundsException()
+            throw NotEnoughMoneyException("The 'amount' <= 0 is an invalid value.")
         }
         log.debug("handling {}", command.amount)
         AggregateLifecycle.apply(CashWithdrawnEvent(id= id, amount = amount))
