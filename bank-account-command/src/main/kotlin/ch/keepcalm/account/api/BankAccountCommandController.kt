@@ -19,7 +19,7 @@ class BankAccountCommandController(private val commandGateway: CommandGateway) {
 //        commandGateway.send<Any, Any>(DepositCashCommand(id, 42), LoggingCallback.INSTANCE)
 //        Thread.sleep(500)
 //        commandGateway.send<Any, Any>(DepositCashCommand(id, 42), LoggingCallback.INSTANCE)
-//        Thread.sleep(500)
+        Thread.sleep(500)
         commandGateway.send<Any, Any>(WithdrawCashCommand(id, 84), LoggingCallback.INSTANCE)
 //                commandGateway.send(new WithdrawCashCommand(idd, 1337), LoggingCallback.INSTANCE);
     }
