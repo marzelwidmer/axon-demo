@@ -10,34 +10,21 @@ import java.util.*
 @RequestMapping("/command")
 class BankAccountCommandController(private val commandGateway: CommandGateway) {
 
-    @GetMapping
-    fun createBankAccount() {
-          val id = UUID.randomUUID().toString()
-        commandGateway.send(CreateBankAccountCommand(id, 1000), LoggingCallback.INSTANCE)
-
-//        Thread.sleep(500)
-//        commandGateway.send<Any, Any>(DepositCashCommand(id, 42), LoggingCallback.INSTANCE)
-//        Thread.sleep(500)
-//        commandGateway.send<Any, Any>(DepositCashCommand(id, 42), LoggingCallback.INSTANCE)
-        Thread.sleep(500)
-        commandGateway.send<Any, Any>(WithdrawCashCommand(id, 84), LoggingCallback.INSTANCE)
-//                commandGateway.send(new WithdrawCashCommand(idd, 1337), LoggingCallback.INSTANCE);
+    @PostMapping(path = ["/accounts"])
+    fun createBankAccount(@RequestBody money: Money): String {
+        val id = UUID.randomUUID().toString()
+        commandGateway.send(CreateBankAccountCommand(id, money.amount), LoggingCallback.INSTANCE)
+        return id
     }
 
-
-    @GetMapping("/{id}")
-    fun createBankAccount(@PathVariable id: String) {
-      //  val id = UUID.randomUUID().toString()
-        commandGateway.send(CreateBankAccountCommand(id, 1000), LoggingCallback.INSTANCE)
-//        commandGateway.send<Any, Any>(DepositCashCommand(id, 42), LoggingCallback.INSTANCE)
-//        commandGateway.send<Any, Any>(DepositCashCommand(id, 42), LoggingCallback.INSTANCE)
-//        commandGateway.send<Any, Any>(WithdrawCashCommand(id, 84), LoggingCallback.INSTANCE)
-        //        commandGateway.send(new WithdrawCashCommand(idd, 1337), LoggingCallback.INSTANCE);
-    }
-
-    @PutMapping(path = ["/{id}"])
-    fun withdrawMoney(@RequestBody money: Money, @PathVariable id: String) {
+    @PutMapping(path = ["/accounts/{id}/withdrawal"])
+    fun withdrawCash(@RequestBody money: Money, @PathVariable id: String) {
         commandGateway.send<Any, Any>(WithdrawCashCommand(id, money.amount), LoggingCallback.INSTANCE)
+    }
+
+    @PutMapping(path = ["/accounts/{id}/deposit"])
+    fun depositCash(@RequestBody money: Money, @PathVariable id: String) {
+        commandGateway.send<Any, Any>(DepositCashCommand(id, money.amount), LoggingCallback.INSTANCE)
     }
 
 }

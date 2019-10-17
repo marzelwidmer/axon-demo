@@ -49,10 +49,22 @@ class BankAccountAggregate {
         AggregateLifecycle.apply(CashWithdrawnEvent(id= id, amount = amount))
     }
     @EventSourcingHandler
-    fun on(event: CashWithdrawnEvent) {
+    protected fun on(event: CashWithdrawnEvent) {
         balance = balance.minus(event.amount)
         log.debug("event {}", balance)
     }
 
+
+    // DepositCash
+    @CommandHandler
+    protected fun handle(command: DepositCashCommand) {
+        log.debug("handling {}", command.amount)
+        AggregateLifecycle.apply(CashDepositedEvent(id=command.id, amount = command.amount))
+    }
+    @EventSourcingHandler
+    protected fun on(event: CashDepositedEvent){
+        balance = balance.plus(event.amount)
+        log.debug("event {}", balance)
+    }
 
 }
