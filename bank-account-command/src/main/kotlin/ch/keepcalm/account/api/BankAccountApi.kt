@@ -9,10 +9,9 @@ import javax.validation.constraints.NotNull
 //  | (__ (_) | | | | | | | | | | | (_| | | | | (_| \__ \
 //   \___\___/|_| |_| |_|_| |_| |_|\__,_|_| |_|\__,_|___/
 //
-data class CreateBankAccountCommand(@TargetAggregateIdentifier val id: String, val balance: Int) // : BaseCommand<String>()
-data class DepositCashCommand(@TargetAggregateIdentifier val id: String, val amount: Int) //: BaseCommand<String>(id)
-data class WithdrawCashCommand(@TargetAggregateIdentifier val id: String, val amount: Int)//: BaseCommand<String>(id)
-
+data class CreateBankAccountCommand(@TargetAggregateIdentifier val id: String, val balance: Int)
+data class DepositCashCommand(@TargetAggregateIdentifier val id: String, val amount: Int)
+data class WithdrawCashCommand(@TargetAggregateIdentifier val id: String, val amount: Int)
 
 //                        _       
 //    _____   _____ _ __ | |_ ___ 
