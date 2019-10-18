@@ -2,6 +2,17 @@ spring:
   application:
     name: bank-account-command
 
+  jackson:
+    serialization:
+      FAIL_ON_EMPTY_BEANS: false
+# Needed for empty HATEOAS responses or just void RestController functions
+#Type definition error:
+#    [simple type, class java.lang.Object]; nested exception is
+#    com.fasterxml.jackson.databind.exc.InvalidDefinitionException:
+#     No serializer found for class java.lang.Object and no properties discovered to create BeanSerializer
+#     to avoid exception, disable SerializationFeature.FAIL_ON_EMPTY_BEANS) (through reference chain: org.springframework.hateoas.EntityModel[\"content\"])",
+
+
 logging.level:
   ch.keepcalm: DEBUG
 
@@ -18,3 +29,6 @@ logging:
           %clr([${spring.zipkin.service.name:${spring.application.name:-}},){magenta}%clr(%X{X-B3-TraceId:-},){yellow}%clr(%X{X-B3-SpanId:-},){cyan}%clr(,%X{X-Span-Export:-}]){blue}%clr([%8.15t]){cyan}
           %clr(%-40.40logger{0}){blue} %clr(:){red} %clr(%m
           ){faint}%n"
+
+
+

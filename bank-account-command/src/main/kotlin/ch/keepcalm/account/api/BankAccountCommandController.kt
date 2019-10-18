@@ -1,14 +1,10 @@
 package ch.keepcalm.account.api
 
-import ch.keepcalm.PersonController
-import ch.keepcalm.PersonModel
 import org.axonframework.commandhandling.callbacks.LoggingCallback
 import org.axonframework.commandhandling.gateway.CommandGateway
 import org.springframework.hateoas.EntityModel
-import org.springframework.hateoas.server.mvc.WebMvcLinkBuilder
 import org.springframework.web.bind.annotation.*
 import java.util.*
-
 
 @RestController
 @RequestMapping("/command")
@@ -27,9 +23,9 @@ class BankAccountCommandController(private val commandGateway: CommandGateway) {
     }
 
     @PutMapping(path = ["/accounts/{id}/deposit"])
-    fun depositCash(@RequestBody money: Money, @PathVariable id: String) {
+    fun depositCash(@RequestBody money: Money, @PathVariable id: String){
         commandGateway.send<Any, Any>(DepositCashCommand(id, money.amount), LoggingCallback.INSTANCE)
     }
 }
 
-data class Money(val amount: Int= 0)
+data class Money(val amount: Int = 0)
