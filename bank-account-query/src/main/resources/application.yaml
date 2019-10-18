@@ -2,10 +2,6 @@ spring:
   application:
     name: bank-account-query
 
-  jackson:
-    serialization:
-      FAIL_ON_EMPTY_BEANS: false
-
   h2:
     console:
       enabled: true
