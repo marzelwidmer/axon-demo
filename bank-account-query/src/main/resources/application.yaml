@@ -2,12 +2,9 @@ spring:
   application:
     name: bank-account-query
 
-#  jpa:
-#    generate-ddl: true
-#  datasource:
-#    url: jdbc:postgresql://localhost:5432/bank
-#    username: bank
-#    password: secret
+  jackson:
+    serialization:
+      FAIL_ON_EMPTY_BEANS: false
 
   h2:
     console:

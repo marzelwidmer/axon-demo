@@ -29,12 +29,15 @@ fun main(args: Array<String>) {
 class IndexController : RepresentationModel<IndexController>() {
 
     @GetMapping
-    fun api(): RepresentationModel<IndexController> = RepresentationModel<IndexController>()
-            .apply {
-                add(linkTo(methodOn(BankAccountCommandController::class.java).createBankAccount(money = Money())).withRel("bank-account"))
-                add(Link(UriTemplate.of("${BasicLinkBuilder.linkToCurrentMapping()}/accounts/{id}/withdrawal"), "withdraw-money"))
-                add(Link(UriTemplate.of("${BasicLinkBuilder.linkToCurrentMapping()}/accounts/{id}/deposit"), "deposit-money"))
-            }
+    fun api(): RepresentationModel<IndexController> {
+        return RepresentationModel<IndexController>().apply {
+            add(linkTo(methodOn(BankAccountCommandController::class.java).createBankAccount(money = Money())).withRel("bank-account"))
+            add(Link(UriTemplate.of("${BasicLinkBuilder.linkToCurrentMapping()}/accounts/{id}/withdrawal"), "withdraw-money"))
+            add(Link(UriTemplate.of("${BasicLinkBuilder.linkToCurrentMapping()}/accounts/{id}/deposit"), "deposit-money"))
+            add(linkTo(methodOn(IndexController::class.java).api()).withSelfRel())
+        }
+    }
+
 }
 
 
