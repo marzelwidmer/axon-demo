@@ -35,6 +35,11 @@
     </developers>
 
     <dependencies>
+<!-- Problem with AXON
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-devtools</artifactId>
+        </dependency>-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-actuator</artifactId>
@@ -48,6 +53,7 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-hateoas</artifactId>
         </dependency>
+
 
         <!-- Axon -->
         <dependency>
@@ -138,7 +144,8 @@
                 <artifactId>kotlin-maven-plugin</artifactId>
                 <configuration>
                     <args>
-                        <arg>-Xjsr305=strict</arg>
+                        <arg>-Xjsr305=warn</arg>
+                        <arg>-Xjsr305=@javax.annotation.Nullable:ignore</arg>
                     </args>
                     <compilerPlugins>
                         <plugin>spring</plugin>

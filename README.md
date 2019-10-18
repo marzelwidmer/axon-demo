@@ -1,7 +1,4 @@
-Based on:  
-https://www.youtube.com/watch?v=kFYIrlOU0g8&t=1910s
-https://www.youtube.com/watch?v=15hzHUI4WNA&t=1086s
-https://ookami86.github.io/event-sourcing-in-practice/#slide-20
+Based on:  https://www.youtube.com/watch?v=kFYIrlOU0g8&t=1910s
 
 
 ```                                                                                                             
