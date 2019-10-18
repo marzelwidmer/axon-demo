@@ -51,7 +51,7 @@ class BankAccountAggregate {
     @EventSourcingHandler
     protected fun on(event: CashWithdrawnEvent) {
         balance = balance.minus(event.amount)
-        log.debug("event {}", balance)
+        log.debug("[CashWithdrawnEvent] balance {}", balance)
     }
 
 
@@ -64,7 +64,7 @@ class BankAccountAggregate {
     @EventSourcingHandler
     protected fun on(event: CashDepositedEvent){
         balance = balance.plus(event.amount)
-        log.debug("event {}", balance)
+        log.debug("[CashDepositedEvent] balance {}", balance)
     }
 
 }
