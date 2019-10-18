@@ -1,5 +1,6 @@
 package ch.keepcalm
 
+import ch.keepcalm.account.api.BankAccountQueryController
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
 import org.springframework.hateoas.MediaTypes
@@ -27,6 +28,7 @@ class IndexController : RepresentationModel<IndexController>() {
     fun api(): RepresentationModel<IndexController> {
         return RepresentationModel<IndexController>().apply {
             add(linkTo(methodOn(IndexController::class.java).api()).withSelfRel())
+            add(linkTo(methodOn(BankAccountQueryController::class.java).accounts()).withRel("bank-account"))
         }
     }
 }
