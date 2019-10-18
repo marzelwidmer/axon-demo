@@ -1,8 +1,6 @@
 package ch.keepcalm.account.api
 
-import org.axonframework.modelling.command.TargetAggregateIdentifier
 import javax.validation.constraints.NotNull
-
 
 //                        _       
 //    _____   _____ _ __ | |_ ___ 
