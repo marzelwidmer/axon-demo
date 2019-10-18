@@ -30,4 +30,4 @@ data class CashWithdrawnEvent(@NotNull(message = "Id cannot be null")  val id: S
 //  | (__ (_) | | | | | | | | | | | (_) | | | |
 //   \___\___/|_| |_| |_|_| |_| |_|\___/|_| |_|
 //
-class NotEnoughMoneyException internal constructor(message: String) : RuntimeException(message)
+class NotEnoughMoneyException internal constructor(message: String) :  Exception(message)  //RuntimeException(message)
