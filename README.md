@@ -92,8 +92,38 @@ SELECT * FROM account;
 $ oc new-project axon --display-name="AxonIQ Axon Server"
 ```
 
+## Create OpenShift Docker Image
+On OpenShift are some restriction for this we have to patch the `axoniq/axonserver` Docker image.
+
+### Build Image
+```bash
+$ docker build --no-cache -t c3smonkey/axonserver-openshift:latest openshift/dockerfiles/
+```
+
+### Docker Logim
+```bash
+$ docker login
+```
+
+### Docker Push
+```bash
+$ docker push c3smonkey/axonserver-openshift:latest
+```
+
 ## Deploy Axon Server
 ```bash
 $ oc apply -f openshift/axonserver.yaml
 ```
 
+# Deploy Command Part
+Change in the `bank-account-command` Maven directory and deploy the Spring Boot Application with the `Fabric8` Maven Plug-In in the `axon` project (namespace)
+```bash
+$ mvn fabric8:deploy -Dfabric8.namespace=axon
+```
+
+
+# Deploy Query Part
+Change in the `bank-account-query` Maven directory and deploy the Spring Boot Application with the `Fabric8` Maven Plug-In in the `axon` project (namespace)
+```bash
+$ mvn fabric8:deploy -Dfabric8.namespace=axon
+```

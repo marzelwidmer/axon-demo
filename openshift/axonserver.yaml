@@ -18,11 +18,9 @@ spec:
     spec:
       containers:
         - name: axonserver
-          image: axoniq/axonserver
+#          image: axoniq/axonserver
+          image: c3smonkey/axonserver-openshift:latest
           imagePullPolicy: Always
-#          env:
-#            - name: axoniq.axonserver.pidFileLocation
-#              value: "/opt/axonserver/data"
           ports:
             - name: grpc
               containerPort: 8124
