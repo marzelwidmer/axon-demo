@@ -20,6 +20,9 @@ spec:
         - name: axonserver
           image: axoniq/axonserver
           imagePullPolicy: Always
+#          env:
+#            - name: axoniq.axonserver.pidFileLocation
+#              value: "/opt/axonserver/data"
           ports:
             - name: grpc
               containerPort: 8124
@@ -40,13 +43,12 @@ spec:
   volumeClaimTemplates:
     - metadata:
         name: axon-data
-#        annotations:
-#          volume.beta.kubernetes.io/storage-class: fast
       spec:
         accessModes: [ "ReadWriteOnce" ]
         resources:
           requests:
             storage: 128Mi
+
 ---
 apiVersion: v1
 kind: Service
