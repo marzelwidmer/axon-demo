@@ -6,7 +6,7 @@ metadata:
   labels:
       app: axonserver
 spec:
-  serviceName: "axonserver"
+  serviceName: axonserver
   replicas: 1
   selector:
     matchLabels:
@@ -40,13 +40,13 @@ spec:
   volumeClaimTemplates:
     - metadata:
         name: axon-data
-        annotations:
-          volume.beta.kubernetes.io/storage-class: fast
+#        annotations:
+#          volume.beta.kubernetes.io/storage-class: fast
       spec:
         accessModes: [ "ReadWriteOnce" ]
         resources:
           requests:
-            storage: 1Gi
+            storage: 128Mi
 ---
 apiVersion: v1
 kind: Service
