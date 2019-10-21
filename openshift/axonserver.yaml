@@ -35,6 +35,9 @@ spec:
             initialDelaySeconds: 5
             periodSeconds: 5
             timeoutSeconds: 1
+          env:
+            - name: AXONSERVER_HOSTNAME
+              value: axonserver
           volumeMounts:
             - name: axon-data
               mountPath: /opt/axonserver/data
@@ -77,3 +80,24 @@ spec:
   clusterIP: None
   selector:
     app: axonserver
+    type: LoadBalancer
+
+
+
+# Routing
+---
+apiVersion: v1
+kind: Route
+metadata:
+  labels:
+    app: axonserver-gui
+  name: axonserver-gui
+spec:
+#  host: axonserver-gui.apps.c3smonkey.ch
+  port:
+    targetPort: gui
+  to:
+    kind: Service
+    name: axonserver-gui
+    weight: 100
+
