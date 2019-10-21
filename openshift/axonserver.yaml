@@ -77,10 +77,8 @@ spec:
     - name: grpc
       port: 8124
       targetPort: 8124
-  clusterIP: None
   selector:
     app: axonserver
-    type: LoadBalancer
 
 
 
