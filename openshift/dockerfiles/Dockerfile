@@ -1,6 +1,6 @@
-# Stage 0, "build-stage", based on Node.js, to build and compile the frontend
 FROM axoniq/axonserver
 
+# TODO CHECK if this needed....
 RUN chmod -R 0755 ${AXONSERVER_HOME} && \
     chgrp -R 0 ${AXONSERVER_HOME} && \
     chmod -R g=u ${AXONSERVER_HOME} /etc/passwd
