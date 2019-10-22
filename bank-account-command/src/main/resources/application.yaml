@@ -8,14 +8,6 @@ logging.level:
 axon:
   axonserver:
     servers: axonserver:8124
-#    servers: localhost:8124
-#    servers: axonserver:8124
-#      servers: 10.128.1.134:8124
-#    servers: axonserver-axon.apps.c3smonkey.ch
-#    port: 80
-#    servers: axonserver:8124
-#    servers: 10.128.1.195:8024
-#    servers: axonserver.axon.svc:8124
 
 server:
   port: 8080
@@ -29,3 +21,14 @@ logging:
 
 
 
+---
+spring:
+  profiles:
+    active: local
+
+axon:
+  axonserver:
+    servers: localhost:8124
+
+server:
+  port: 8080

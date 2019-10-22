@@ -24,11 +24,7 @@ logging.level:
 
 axon:
   axonserver:
-    servers: localhost:8124
-#    servers: 10.128.1.134:8124
-#    servers: axonserver-axon.apps.c3smonkey.ch
-#    port: 80
-#    servers: axonserver:8124
+    servers: axonserver:8124
 
 server:
   port: 8080
@@ -38,3 +34,16 @@ logging:
     console: "%clr(%d{yy-MM-dd E HH:mm:ss.SSS}){blue} %clr(%-5p) %clr(${PID}){faint}
           %clr([${spring.zipkin.service.name:${spring.application.name:-}},){magenta}%clr(%X{X-B3-TraceId:-},){yellow}%clr(%X{X-B3-SpanId:-},){cyan}%clr(,%X{X-Span-Export:-}]){blue}%clr([%8.15t]){cyan}
           %clr(%-40.40logger{0}){blue} %clr(:){red} %clr(%m){faint}%n"
+
+
+---
+spring:
+  profiles:
+    active: local
+
+axon:
+  axonserver:
+    servers: localhost:8124
+
+server:
+  port: 8081
