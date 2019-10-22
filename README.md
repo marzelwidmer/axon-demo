@@ -150,26 +150,6 @@ $ oc get pvc
   axon-data-axonserver-0   Bound    vol83    500Gi      RWO,RWX                       1h
 ```
 
-Describe the the `pvc/axon-data-axonserver-0` to get the _Volume_ name.
-
-```bash
-$ oc describe pvc/axon-data-axonserver-0
-
-Name:          axon-data-axonserver-0
-Namespace:     axon
-StorageClass:
-Status:        Bound
-Volume:        vol83
-Labels:        app=axonserver
-Annotations:   pv.kubernetes.io/bind-completed: yes
-               pv.kubernetes.io/bound-by-controller: yes
-Finalizers:    [kubernetes.io/pvc-protection]
-Capacity:      500Gi
-Access Modes:  RWO,RWX
-Events:        <none>
-Mounted By:    axonserver-0
-```
-
 Describe the PersistentVolume `PV` for the _Axon_
 ```bash
 $ oc describe pv/vol83
