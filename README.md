@@ -139,3 +139,66 @@ $ ./mvnw clean fabric8:deploy -pl bank-account-command,bank-account-query -Dfabr
 ```bash
 $ oc scale statefulsets axonserver --replicas=2
 ```
+
+
+
+### Check the physical files
+Search for `axon-data` PersistentVolumeClaim `PVC`.
+```bash
+$ oc get pvc
+  NAME                     STATUS   VOLUME   CAPACITY   ACCESS MODES   STORAGECLASS   AGE
+  axon-data-axonserver-0   Bound    vol83    500Gi      RWO,RWX                       1h
+```
+
+Describe the the `pvc/axon-data-axonserver-0` to get the _Volume_ name.
+
+```bash
+$ oc describe pvc/axon-data-axonserver-0
+
+Name:          axon-data-axonserver-0
+Namespace:     axon
+StorageClass:
+Status:        Bound
+Volume:        vol83
+Labels:        app=axonserver
+Annotations:   pv.kubernetes.io/bind-completed: yes
+               pv.kubernetes.io/bound-by-controller: yes
+Finalizers:    [kubernetes.io/pvc-protection]
+Capacity:      500Gi
+Access Modes:  RWO,RWX
+Events:        <none>
+Mounted By:    axonserver-0
+```
+
+Describe the PersistentVolume `PV` for the _Axon_
+```bash
+$ oc describe pv/vol83
+
+Name:            vol83
+Labels:          <none>
+Annotations:     pv.kubernetes.io/bound-by-controller: yes
+Finalizers:      [kubernetes.io/pv-protection]
+StorageClass:
+Status:          Bound
+Claim:           axon/axon-data-axonserver-0
+Reclaim Policy:  Retain
+Access Modes:    RWO,RWX
+Capacity:        500Gi
+Node Affinity:   <none>
+Message:
+Source:
+    Type:          HostPath (bare host directory volume)
+    Path:          /mnt/data/vol83
+    HostPathType:
+Events:            <none>
+```
+
+Then login to your Cluster there you will find the data.
+```bash
+$  ls -la /mnt/data/vol83
+   total 80
+   drwxrwxrwx.   3 root       root  4096 Oct 22 11:04 .
+   drwxr-xr-x. 202 root       root  4096 Sep  9 17:39 ..
+   -rw-r--r--.   1 1000080000 root 69632 Oct 22 11:04 axonserver-controldb.mv.db
+   drwxr-xr-x.   2 1000080000 root  4096 Oct 22 11:04 default
+```
