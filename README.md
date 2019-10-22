@@ -115,6 +115,14 @@ $ docker push c3smonkey/axonserver-openshift:latest
 $ oc apply -f openshift/axonserver.yaml
 ```
 
+## Configure Axon Server EndPoint
+If you deploy AxonServer on the same Project `namespace` you can configure the Spring Boot application  in the `application.yml` file like below
+```yaml
+axon:
+  axonserver:
+    servers: axonserver:8124
+```
+
 # Deploy Command Part
 Change in the `bank-account-command` Maven directory and deploy the Spring Boot Application with the `Fabric8` Maven Plug-In in the `axon` project (namespace)
 ```bash
@@ -126,4 +134,10 @@ $ mvn fabric8:deploy -Dfabric8.namespace=axon
 Change in the `bank-account-query` Maven directory and deploy the Spring Boot Application with the `Fabric8` Maven Plug-In in the `axon` project (namespace)
 ```bash
 $ mvn fabric8:deploy -Dfabric8.namespace=axon
+```
+
+
+## Scale ReplicaSet
+```bash
+$ oc scale statefulsets axonserver --replicas=2
 ```
