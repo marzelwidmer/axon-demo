@@ -95,12 +95,13 @@ $ oc new-project axon --display-name="AxonIQ Application"
 ## Create OpenShift Docker Image
 On OpenShift are some restriction for this we have to patch the `axoniq/axonserver` Docker image.
 
-### Build Image
+### Build Axon Docker Image 
+Patch Docker Image from Axon to run on Openshift. 
 ```bash
 $ docker build --no-cache -t c3smonkey/axonserver-openshift:latest openshift/dockerfiles/
 ```
 
-### Docker Logim
+### Docker Login
 ```bash
 $ docker login
 ```
@@ -123,21 +124,18 @@ axon:
     servers: axonserver:8124
 ```
 
-# Deploy Command Part
-Change in the `bank-account-command` Maven directory and deploy the Spring Boot Application with the `Fabric8` Maven Plug-In in the `axon` project (namespace)
+# Deploy Application
+Deploy `bank-account-command` and `bank-account-query` Spring Boot Application.
+with the `Fabric8` Maven Plug-In in the `axon` project (namespace)
 ```bash
-$ mvn fabric8:deploy -Dfabric8.namespace=axon
+
+$ ./mvnw clean fabric8:deploy -pl bank-account-command,bank-account-query -Dfabric8.namespace=axon
 ```
 
 
-# Deploy Query Part
-Change in the `bank-account-query` Maven directory and deploy the Spring Boot Application with the `Fabric8` Maven Plug-In in the `axon` project (namespace)
-```bash
-$ mvn fabric8:deploy -Dfabric8.namespace=axon
-```
 
+## Scale ReplicaSet of Axon
 
-## Scale ReplicaSet
 ```bash
 $ oc scale statefulsets axonserver --replicas=2
 ```
