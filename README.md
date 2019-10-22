@@ -89,7 +89,7 @@ SELECT * FROM account;
 
 ## Create Project
 ```bash
-$ oc new-project axon --display-name="AxonIQ Axon Server"
+$ oc new-project axon --display-name="AxonIQ Application"
 ```
 
 ## Create OpenShift Docker Image
