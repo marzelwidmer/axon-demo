@@ -13,12 +13,6 @@ spring:
   jpa:
     generate-ddl: true
 
-management:
-  endpoints:
-    web:
-      exposure:
-        include: '*'
-
 logging.level:
   ch.keepcalm: DEBUG
 
@@ -26,8 +20,11 @@ axon:
   axonserver:
     servers: axonserver:8124
 
-server:
-  port: 8080
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
 
 logging:
   pattern:

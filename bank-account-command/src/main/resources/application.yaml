@@ -9,8 +9,6 @@ axon:
   axonserver:
     servers: axonserver:8124
 
-server:
-  port: 8080
 
 logging:
   pattern:
