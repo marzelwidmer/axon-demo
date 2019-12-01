@@ -1,6 +1,9 @@
 Based on:  https://www.youtube.com/watch?v=kFYIrlOU0g8&t=1910s
 
 
+![axon-cqrs](axon-cqrs.png)
+
+
 ```                                                                                                             
                                Events -->                                                                          
            +-------------------------------------------+                                                    
