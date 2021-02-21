@@ -37,7 +37,6 @@ class IndexController : RepresentationModel<IndexController>() {
             add(linkTo(methodOn(IndexController::class.java).api()).withSelfRel())
         }
     }
-
 }
 
 
