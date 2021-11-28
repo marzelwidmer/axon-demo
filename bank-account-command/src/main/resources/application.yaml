@@ -6,6 +6,7 @@ spring:
     name: bank-account-command
 
 logging.level:
+  org.springframework:  trace
   ch.keepcalm: DEBUG
 
 axon:
