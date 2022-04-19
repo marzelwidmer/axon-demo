@@ -13,14 +13,14 @@ class BankAccountEventHandler (private val bankAccountViewRepository: BankAccoun
     @EventHandler
     fun on (event: CashDepositedEvent)  {
         val result = bankAccountViewRepository.findById(event.id).get()
-        val balance  = result.balance!!.plus(event.amount) // dirty-stuff
+        val balance  = result.balance?.plus(event.amount)
         bankAccountViewRepository.save(BankAccountView(id = event.id, balance = balance))
     }
 
     @EventHandler
     fun on (event: CashWithdrawnEvent){
         val result = bankAccountViewRepository.findById(event.id).get()
-        val balance  = result.balance!!.minus(event.amount) // dirty-stuff
+        val balance  = result.balance?.minus(event.amount)
         bankAccountViewRepository.save(BankAccountView(id = event.id, balance = balance))
     }
 
